@@ -1,0 +1,143 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jq-tiles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="../../js/jquery.js" type="text/javascript"></script>
+    <script src="js/jquery.tiles.js"></script>
+    
+    
+    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/jquery.tiles.min.css"/>
+    <link rel="stylesheet" href="css/styles.css" media="screen"/>
+  </head>
+  <body>
+
+    <a href="https://github.com/elclanrs/jq-tiles"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+    <header>
+    <h1><img src="img/logo.png" alt="jq-tiles" /></h1>
+    <a href="https://github.com/elclanrs/jq-tiles/raw/master/zip/jquery.tiles.zip" id="down">Download</a>
+    <div class="effects">
+    </div>
+    </header>
+
+    <section>
+    <div class="title">
+      <!--<h3>&raquo; default</h3>-->
+      <label>Effect:</label>
+      <select id="effects-select">
+        <option value="default">default</option>
+        <option value="simple">simple</option>
+        <option value="left">left</option>
+        <option value="up">up</option>
+        <option value="leftright">leftright</option>
+        <option value="updown">updown</option>
+        <option value="switchlr">switchlr</option>
+        <option value="switchud">switchud</option>
+        <option value="fliplr">fliplr</option>
+        <option value="flipud">flipud</option>
+        <option value="reduce">reduce</option>
+        <option value="360">360</option>
+      </select>
+      <div class="code">
+        <code>x: 6</code>
+        <code>y: 4</code>
+        <code>random: true</code>
+      </div>
+      <button type="button" class="start action">Play</button>
+      <button type="button" class="stop action">Stop</button>
+    </div>
+    <div class="slider-wrap">
+      <div class="slider">
+        <p><strong>Pig ham:</strong> hock pork loin brisket pastrami frankfurter andouille.</p>
+        <img src="filemanager.jpg"/><p><strong>Pig ham:</strong> ���� �������</p>
+        <img src="img/img01.jpg"/><p><strong>Sausage:</strong> ground round sirloin ball tip beef ribs.</p>
+        <img src="img/img02.jpg"/><p><strong>Pig ham:</strong> hock pork loin brisket pastrami frankfurter andouille.</p>
+        <img src="img/img03.jpg"/><p><strong>Pork turkey:</strong> shoulder, filet mignon chuck t-bone bacon.</p>
+        <img src="img/img04.jpg"/><p><strong>Short loin:</strong> pig jowl fatback, pork loin pork chop.</p>
+        <img src="img/img05.jpg"/><p><strong>Sausage:</strong> ground round sirloin ball tip beef ribs.</p>
+        <img src="img/img06.jpg"/><p><strong>Pig ham:</strong> hock pork loin brisket pastrami frankfurter andouille.</p>
+        <img src="img/img07.jpg"/><p><strong>Pork turkey:</strong> shoulder, filet mignon chuck t-bone bacon.</p>
+        <img src="img/img08.jpg"/><p><strong>Short loin:</strong> pig jowl fatback, pork loin pork chop.</p>
+        <img src="img/img09.jpg"/><p><strong>Sausage:</strong> ground round sirloin ball tip beef ribs.</p>
+        <img src="img/img10.jpg"/><p><strong>Pig ham:</strong> hock pork loin brisket pastrami frankfurter andouille.</p>
+        
+      </div>
+    </div>
+    </section>
+
+    <footer><a id="github" href="https://github.com/elclanrs/jq-tiles">&laquo; Back to Github</a></footer>
+
+      <script type="text/javascript">
+
+          var $slider = $('.slider-wrap');
+          var html = $slider.html();
+
+          // Options
+
+          var defaults = {
+              thumbSize: 20,
+              onSlideshowEnd: function () { $('.stop, .start').toggle() }
+          };
+
+          var effects = {
+              'default': { x: 6, y: 4, random: true },
+              simple: { x: 6, y: 4, effect: 'simple', random: true },
+              left: { x: 1, y: 8, effect: 'left' },
+              up: { x: 20, y: 1, effect: 'up', rewind: 60, backReverse: true },
+              leftright: { x: 1, y: 8, effect: 'leftright' },
+              updown: { x: 20, y: 1, effect: 'updown', cssSpeed: 500, backReverse: true },
+              switchlr: { x: 20, y: 1, effect: 'switchlr', backReverse: true },
+              switchud: { x: 1, y: 8, effect: 'switchud' },
+              fliplr: { x: 20, y: 1, effect: 'fliplr', backReverse: true },
+              flipud: { x: 20, y: 3, effect: 'flipud', reverse: true, rewind: 75 },
+              reduce: { x: 6, y: 4, effect: 'reduce' },
+              360: { x: 1, y: 1, effect: '360', fade: true, cssSpeed: 600 }
+          };
+
+          $('#effects-select').change(function () {
+              var effect = $(this).val();
+              $slider.fadeTo(0, 0).html(html);
+              $('.stop').hide();
+              $('.start').show();
+              setTimeout(function () {
+                  $('.slider').tilesSlider($.extend({}, defaults, effects[effect]));
+                  $slider.fadeTo(0, 1);
+                  $('body').removeClass('tiles-preload');
+              }, 100);
+              $('.code').empty().html(function () {
+                  var e = effects[effect], c = [];
+                  for (var i in e) {
+                      if (i !== 'effect') {
+                          c.push('<code>' + i + ': ' + e[i] + '</code>');
+                      }
+                  }
+                  return c.join('');
+              });
+          });
+
+          $('.start').click(function () {
+              $(this).hide();
+              $('.stop').show();
+              $('.slider').tilesSlider('start')
+          });
+
+          $('.stop').click(function () {
+              $(this).hide();
+              $('.start').show()
+              $('.slider').tilesSlider('stop')
+          });
+
+          $('.slider').tilesSlider($.extend({}, defaults, effects['default']));
+
+      </script>
+
+  </body>
+</html>

@@ -1,0 +1,90 @@
+﻿/*a
+{
+    background: #fff;
+    color: #999999;
+    padding: 3px;
+    -webkit-transition: all 0.2s linear;
+}
+a:hover
+{
+    background: #cccccc;
+    color: #fff;
+}
+*/
+
+@font-face {
+     font-family: "droidKufi";
+     src: url("DroidKufi-Regular.eot") format('embedded-opentype'), /* EDIT correction on this line */
+     url('DroidKufi-Regular.woff') format('woff'),
+     url('DroidKufi-Regular.ttf') format('truetype'),
+     url('DroidKufi-Regular.otf') format('truetype'),
+     url('DroidKufi-Regular.svg') format('svg');
+     
+  }
+
+
+
+body
+{
+    direction:rtl;
+    
+}
+
+table
+{
+    border-collapse: collapse;
+	vertical-align:text-top;
+}
+a:link {text-decoration:none; }
+a:visited {text-decoration:none; }
+a:hover {text-decoration:none; }
+a:active {text-decoration:none;}
+
+#trans-nav { list-style-type: none; height: 40px; padding: 0; margin: 0; }
+#trans-nav { list-style-type: none; height: 40px; padding: 0; margin: 0; }
+#trans-nav li { float: right; position: relative; padding: 0; line-height: 40px; background: #555555 url(nav-bg.png) repeat-x 0 0; }
+#trans-nav li:hover { background-position: 0 -40px; }
+#trans-nav li a { display: block; padding: 0 15px; color: #fff; text-decoration: none; }
+#trans-nav li a:hover { color: #a3f1d7; background: #444444;}
+#trans-nav li ul { opacity: 0; position: absolute; left: 0; width: 8em; background: #63867f; list-style-type: none; padding: 0; margin: 0; }
+#trans-nav li:hover ul { opacity: 1; }
+#trans-nav li ul li { float: none; position: static; height: 0; line-height: 0; background: none; }
+#trans-nav li:hover ul li { height: 30px; line-height: 30px; }
+#trans-nav li ul li a { background: #555555; }
+#trans-nav li ul li a:hover { background: #444444; }
+
+#vertical
+{
+    list-style-type:none;
+    display: block;
+}
+
+
+table.gridtable {
+	font-family: "droidKufi",arial,sans-serif;
+	font-size:12px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+	vertical-align:text-top;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 4px;
+	border-style: solid;
+	border-color: #ccc;
+	
+	text-align:right;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 4px;
+	border-style: solid;
+	border-color: #ccc;
+	background-color: #ffffff;
+}
+table.gridtable input[type='text'], input[type='password'], select
+{
+    
+}

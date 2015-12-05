@@ -1,0 +1,885 @@
+.news_leter_txt/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-bottom: 40px;
+  color: #F8F8F8;
+background-color:#F8F8F8 ;
+}
+
+
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+	margin-top:25px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+
+#logo{
+position:absolute;
+top:0;
+left:5%;
+z-index:999;
+}
+.social_icon{
+float:left !important;
+clear:none !important;	
+padding:3px 17px !important;
+	}
+	.search_box{
+	border:0 ;
+	border-radius:20px;
+	color:#CCC;
+	padding:0 5px;	
+	width:80%;
+		}
+	.btn_search{
+    background:none;	
+	border:none;
+	position:absolute;
+	right:22%;
+		}	
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 60px;
+
+}
+.carousel1 {
+  height: 200px;
+  margin-bottom: 60px;
+  margin-top:40px;
+}
+#myCarousel1{
+height: 200px;	
+	
+	}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+height:auto;
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: auto;
+  max-height:500px;
+}
+
+.carousel-control1 {
+position: absolute;
+top: 160px;
+bottom: 0px;
+right: 0px;
+width: 15px;
+font-size: 20px;
+color: #EC1B23;
+text-align: left;
+text-shadow: 0 1px 2px rgba(0,0,0,.6);
+filter: alpha(opacity=50);
+opacity: .5;
+}
+.left1 {
+right: 25px;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+background-repeat: repeat-x;
+}
+.right1 {
+right: 5px;
+left: auto;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+background-repeat: repeat-x;
+}
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.container_marketing{
+	width:80%;
+	margin:0 auto;
+	}
+.row{
+width:75%;	
+float:left;
+	}	
+.row_title{
+width:98%;	
+border-bottom:1px solid #000;
+
+	}	
+.row_title h2{
+	width:80%;
+	float:left;
+	color:#E51071;
+	font-size:16px;
+	font-weight:700;
+	}
+.row_title h3{
+	width:20%;
+	float:left;
+	font-size:12px;
+	color:#E51071;
+	text-align:end;
+	
+	}		
+#side_bar{
+width:25%;
+min-height:100px;
+
+float:right;
+	}
+#side_bar_banner1{
+width:100%;
+height:360px;
+background-color:#ccc;		
+	}
+	#side_bar_banner2{
+width:100%;
+height:160px;
+background-color:#ccc;		
+	}
+#side_bar_banner3{
+width:100%;
+height:760px;
+background-color:#ccc;		
+	}
+.col-lg-4{
+	position:relative;
+	float:left;
+	margin-top:20px;
+	}
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+
+}
+.col-lg-4_box{
+	width:95%;
+    max-width:231px;
+  
+	border-bottom:2px solid #E51071;
+	}
+	.img-circle{
+	border:1px solid #E9E9E9;	
+		}
+.col-lg-4_box_title {
+  font-weight: 700;
+  color:#E51071;
+  font-size:16px;
+  width:80%;
+  float:left;
+}
+
+.col-lg-4_price{
+	font-weight: 900;
+width:20%;
+font-size:16px;
+float:right;
+color:#70767C;	
+	}
+
+	
+/**************************/
+
+
+/* Featurettes
+------------------------- */
+#event_box{
+width:100%;	
+	}
+.event_left{
+		float:left;	
+		width:30%;
+		padding-right:10px;
+		}
+.event_left h2{
+  color:#E51071 !important;
+  font-size:14px !important;
+  width:100%;
+  text-align:center;
+ margin:0 auto;		
+			}
+#event_box img{
+
+margin-right:10px;
+width:100%;
+height:232px;
+	}
+.event_right{
+		float:left;	
+		width:65%;
+		padding-right:5%;
+		}
+		.event_right h2{
+		padding-top:0!important;
+		margin:0;
+		}	
+		
+#event_box h2{
+padding-top:30px;
+font-size:22px;
+font-weight:700;
+padding-bottom:10px;
+color:#3D3936;
+	}
+#event_box h3{
+width:100%;
+font-size:16px;
+margin:0;
+padding:0;
+color:#605D5A;
+font-style:italic;
+	}	
+#event_box p{
+padding-top:10px;
+font-size:12px;
+color:#666;
+
+	}		
+.event_more{
+font-size:13px;
+color:#E51071;	
+	}		
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+	width:40%;
+	font-size:16px;
+  font-weight:700;
+  color:#EC1B23;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.featurette-heading1 {
+	width:40%;
+	font-size:16px;
+  font-weight:700;
+  color:#EC1B23;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+.navbar-wrapper {
+    
+  }
+@media (min-width: 768px) {
+
+  /* Navbar positioning foo */
+  
+  .navbar-wrapper .container {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+   /* border-radius: 4px;*/
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 20px;
+  }
+  
+	.lead1{
+		width:90%;
+		}	
+}
+
+@media (max-width: 768px) {
+.news_leter_box{
+	width:100%;
+	
+	float:none;
+
+	}
+	
+	.navbar-nav{
+	margin: 45px auto auto;	
+		}
+	.lead1{
+		width:90% !important;
+		}	
+	#footer_sitemap,#footer_share,#footer_news_leter,	#footer_contact,#footer_sitemap1{
+	float:none !important;	
+	width:100% !important;
+	margin:0 auto;
+		}
+		
+		.row{
+width:100%;	
+float:none;
+	}
+	#side_bar{
+	width:100%;
+min-height:100px;
+clear:both;
+
+		}	
+	#offer_box1 ,#offer_box2{
+	width:100% !important;
+	float:none !important;	
+		}
+	.contact_table1 ,.contact_table2{
+	float: none !important;
+	width: 90% !important;
+	padding-right: 10px;
+	color: #E61071;
+	}	
+	}
+@media (max-width: 568px) {
+li{
+	float:none !important; 	
+	/*width:100% !important;*/
+		}	
+			
+	}	
+	
+	
+	.lead0 {
+    color: #999;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.2;
+    text-align: center ;
+	padding: 5%;
+}
+.lead1 {
+    color: #999;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.2;
+    text-align: justify ;
+	width:40%;
+}
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+  .featurette-heading1 {
+    margin-top: 30px;
+	margin-bottom:10px;
+  }
+}
+
+footer{
+	background-color: #3C3836;
+	width: 100%;
+	min-height: 266px;
+	padding: 0 0 1%;
+	color: #CCC;
+    text-align:start;
+	}
+	#footer_contant{
+	width: 85%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+		}
+	/****************************/	
+#footer_sitemap{
+width:15%;
+float:left;	
+margin-top:20px;
+	}		
+#footer_sitemap ul li{
+	padding:3px;
+	text-decoration:none;
+	list-style:none;
+	}
+	.footer_sitemap_ul_p{
+		padding:0 ;
+		}
+.footer_sitemap_ul_p  li a{
+	color:#ccc;
+	font-size:14px;
+	font-weight:700;
+	
+	}	
+.footer_sitemap_ul_s li a{
+	color:#999;
+	font-size:13px;
+	}	
+
+
+#footer_sitemap1{
+width:15%;
+float:left;	
+margin-top:20px;
+	}		
+#footer_sitemap1 ul li{
+	padding:3px;
+	text-decoration:none;
+	list-style:none;
+	}
+	
+	/****************************/	
+	
+	/****************************/
+#footer_news_leter{
+width:30%;
+float:left;	
+
+	}	
+#footer_news_leter h2{
+text-align:center;
+font-size:24px;
+color:#FFF;	
+	}	
+.lead2{
+margin:50px 5% 5%;
+color:#fff;
+text-align:left;
+font-size:14px;	
+
+	}	
+.footer_news_leter_form{
+	width:100%;
+	height:auto;
+		}
+	.footer_news_leter_txt{
+	width:90%;
+	margin:0 5%;
+	background:none !important;
+	background-color:#fff !important;
+	border:2px solid #fff;
+	color:#ccc;
+	font-style:italic;
+	border-radius:25px;
+	padding:1px 3px;
+		}
+		.footer_news_leter_btn{
+			border-radius:25px;
+	width:25%;
+	margin:2% 5%;
+	padding:1px 3px;
+	background-color:#fff;
+	float:right;
+	color:#000;
+	border:2px solid #fff;
+	font-size:12px;
+	font-weight:700;
+	color:#E61071;
+		}	
+		
+	#footer_contact_links{
+	width:100%;	
+	margin:0;
+	padding:0;
+		}
+	#footer_contact_links h2{
+	width:100%;	
+	margin:0;
+	padding:0;
+	text-align:center;
+	font-size:18px;
+		}	
+		#footer_contact_links ul{
+	width:100%;	
+	margin:0;
+		padding:0;
+		}
+	#footer_contact_links ul li{
+	float:left;
+	list-style:none;
+		}		
+		/****************************/	
+#footer_contact{
+width:35%;
+float:left;	
+
+	}
+#footer_contact h2{
+float:left;
+font-size:14px;	
+width:50%;
+	font-weight:700;
+	}
+.lead3{
+margin:0 5%;
+color:#fff;
+text-align:left;
+font-size:14px;	
+
+	}
+	
+#footer_contact_phon1{
+margin:0  5% 0 ;
+width:75%;	
+float:right;	
+	}	.footer_t_icon1,.footer_f_icon1{
+padding:5% 2px ;
+	}
+/*******************************aboutttt******************/
+
+
+.about_title{
+width:98%;	
+border-bottom:1px solid #000;
+height:;
+	}	
+.about_title h2{
+	width:80%;
+	float:left;
+	color:#E51071;
+	font-size:16px;
+	font-weight:900;
+	}
+
+#about_box{
+width:100%;	
+	}
+#about_box img{
+float:left;	
+margin-right:10px;
+width:231px;
+
+	}
+
+#about_box p{
+padding-top:10px;
+font-size:12px;
+color:#666;
+padding:0 10%;
+	}		
+.about_box{
+font-size:13px;
+color:#E51071;	
+	}			
+	
+/***********************************************/	
+.partner_title{
+width:98%;	
+border-bottom:1px solid #000;
+height:;
+	}	
+.partner_title h2{
+	width:80%;
+	float:left;
+	color:#E51071;
+	font-size:16px;
+	font-weight:900;
+	}
+.col-lg-partner{
+	position:relative;
+	float:left;
+	margin-top:20px;
+	padding:5px 10px;
+	}
+.marketing .col-lg-partner{
+  margin-bottom: 20px;
+
+}
+.col-lg-partner_box{
+	width:95%;
+	border-bottom:2px solid #E51071;
+	}
+	.img-circle_p{
+	border:1px solid #E9E9E9;	
+		}
+.col-lg-partner_box_title {
+  font-weight: 700;
+  color:#3C3836;
+  font-size:16px;
+  width:80%;
+text-align:center;
+}
+/***************************************************/
+
+#about_box1{
+width:90%;	
+	}
+
+
+#about_box1 p{
+padding-top:0px;
+font-size:12px;
+color:#666;
+padding:0;
+	}		
+.about_box1{
+font-size:13px;
+color:#E51071;	
+	}			
+/***************Ofers************************/	
+
+.row_sort_by{
+width:100%;
+	
+	}
+	.dropdown-menu>li>a{
+	border:none !important	;
+		}
+	.row_sort_by>.nav a{
+    border:1px solid #CCC;border-radius:20px;
+	margin:0 10px;
+	}
+
+.row_sort_by>.nav .open>a{
+    border:1px solid #CCC;border-radius:20px;}
+
+.paging{
+width:101px;
+margin:20px auto;	
+	}
+	
+.offer_title{
+width:98%;	
+border-bottom:1px solid #000;
+height:;
+	
+	}
+		.offer_title h2{
+	width:80%;
+	float:left;
+	color:#E51071;
+	font-size:16px;
+	font-weight:900;
+	}
+	.offer_title h3{
+	width:20%;
+	float:left;
+	color:#E51071;
+	font-size:16px;
+	font-weight:900;
+	}
+.offer_title img{
+float:right;	
+	}	
+
+#offer_box{
+	color: #E61071;
+	
+	}	
+#offer_box h2{
+	color: #666;
+	
+	}	
+#offer_box p{
+	color: #666;
+	
+	}			
+	#offer_box1{
+	width:50%;
+	float:left;
+	padding-right:10px;
+		}
+#offer_box h2{
+	width:80%;
+	float:left;
+	}	
+#offer_box h3{
+	width:20%;
+	float:left;
+	}	
+#offer_box img{
+	width:100%;
+	margin-right:10px;
+	}			
+	#offer_box2{
+	width:50%;
+	float:left;
+	
+	
+		}
+#offer_box2 ul li{
+width:50%;	
+font-weight:600;
+	list-style:none;
+	font-size:12px;
+	padding:2px;
+	}
+	#offer_box2 ul li:first-child{
+		width:30%;	
+		color:#E51071;
+		float:left;
+	}
+	#offer_box2 ul li:nth-child(2){
+		width:70%;	
+		color:#333;
+		float:right;
+	}
+#follow_us{
+width:100%;	
+	}
+		#follow_us{
+		padding-left:40px;
+		width:100%;	
+			}
+			#follow_us h2{
+		    float:none;
+			font-size:14px;
+			}
+			#follow_us a{
+		float:left;
+		width:10%;	
+			}
+			#follow_us img{
+			width:auto !important;
+				}
+
+.offer_footer{
+width:100%;	
+	}
+	.offer_footer ul li{
+	width:15%;
+	float:left;	
+	list-style:none;
+		}
+		.offer_footer img{
+	width:auto !important;
+	float:left;	
+		}
+		.offer_footer ul li span{
+	border:1px solid #CCC;
+	color:#CCC;
+	padding:0px 5px;
+		}
+	/*****************Contact_box********************/	
+	#contact_box{
+width:100%;	
+	}
+	#contact_box ul li{
+width:25%;	
+float:left;
+list-style:none;
+	}
+.contact_box_1{
+width:100%;
+
+	}	
+	.contact_box_1 h2{
+width:100%;
+font-size:14px;
+	color:#E51071;
+
+	}	
+	.contact_box_1 h3{
+width:100%;
+font-size:14px;
+	color:#666;
+
+	}	
+.contact_box_follow{
+width:100%;	
+	}
+.contact_box_follow h2{
+width:100%;
+font-size:14px;
+	color:#E51071;
+
+	}		
+.contact_box_follow a{
+width:10%;	
+	}		
+.map_title{
+width:100%;
+font-size:14px;
+	color:#E51071;	
+	font-weight:700;
+	}
+.map_contact{
+width:100%;	
+	}	
+.contact_table1{
+	float: left;
+	width: 50%;
+	padding-right: 10px;
+	color: #E61071;
+	}	
+	.contact_table1 input,select{
+		border:1px solid #333;
+	border-radius:20px;	
+	width:90%;
+		}
+	.contact_table2{
+	float: left;
+	width: 50%;
+	text-align: left;
+	color: #E61071;
+	}	.contact_table2 input,textarea{
+		border:1px solid #333;
+	border-radius:20px;	
+	width:100%;
+		}
+/*******************************************/
+	#signin_box{
+width:100%;	
+	}
+.signin_table1{
+
+	width: 60%;
+		text-align: left;
+	color: #E61071;
+	}	
+	.signin_table1 input,select{
+		border:1px solid #333;
+	border-radius:20px;	
+	width:100%;
+	padding:1px 5px;
+	color:#666;
+		}
+	.signin_table2{
+	float:left;
+	width:50%;
+	text-align: left;
+	color: #E61071;
+	}	.signin_table2 input,textarea,select{
+		border:1px solid #333;
+	border-radius:20px;	
+	
+		padding:1px 5px;
+		color:#666;
+		}
+	.table>tbody>tr>td{
+	border:none ;	
+		}	

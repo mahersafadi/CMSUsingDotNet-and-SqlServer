@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CMS" Class="CMSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=CMS;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CMSConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.application" Member="applications">
+    <Type Name="application">
+      <Column Name="[_app_id]" Member="_app_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="app_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="application_permission" Member="permissions" ThisKey="_app_id" OtherKey="__rapplication" Type="permission" />
+      <Association Name="application_role" Member="roles" ThisKey="_app_id" OtherKey="__rapplication" Type="role" />
+    </Type>
+  </Table>
+  <Table Name="dbo.visitor" Member="visitors">
+    <Type Name="visitor">
+      <Column Name="[_vid]" Member="_vid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[__rcontent]" Member="__rcontent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="content_visitor" Member="content" ThisKey="__rcontent" OtherKey="_cid" Type="content" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bnp_vchr_client" Member="bnp_vchr_clients">
+    <Type Name="bnp_vchr_client">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="vchr_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="client_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="rest" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="content_detail_bnp_vchr_client" Member="content_detail" ThisKey="vchr_id" OtherKey="_cdid" Type="content_detail" IsForeignKey="true" />
+      <Association Name="user_bnp_vchr_client" Member="user" ThisKey="client_id" OtherKey="_uid" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.category" Member="categories">
+    <Type Name="category">
+      <Column Name="[_cid]" Member="_cid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="category_parent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="category_content" Member="contents" ThisKey="_cid" OtherKey="__rcategory" Type="content" />
+      <Association Name="category_module" Member="modules" ThisKey="_cid" OtherKey="__rcategory" Type="module" />
+    </Type>
+  </Table>
+  <Table Name="dbo.content" Member="contents">
+    <Type Name="content">
+      <Column Name="[_cid]" Member="_cid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[__rimage]" Member="__rimage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__rvideo]" Member="__rvideo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__rcategory]" Member="__rcategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="thumbnail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="content_visitor" Member="visitors" ThisKey="_cid" OtherKey="__rcontent" Type="visitor" />
+      <Association Name="content_content" Member="content2" ThisKey="_cid" OtherKey="_cid" Type="content" Cardinality="One" />
+      <Association Name="content_content_detail" Member="content_details" ThisKey="_cid" OtherKey="__rcontent" Type="content_detail" />
+      <Association Name="content_content_extra" Member="content_extras" ThisKey="_cid" OtherKey="content_id" Type="content_extra" />
+      <Association Name="content_content_form" Member="content_forms" ThisKey="_cid" OtherKey="__rcontent" Type="content_form" />
+      <Association Name="content_content_form_result" Member="content_form_results" ThisKey="_cid" OtherKey="__rcontent" Type="content_form_result" />
+      <Association Name="content_image" Member="images" ThisKey="_cid" OtherKey="__rcontent" Type="image" />
+      <Association Name="content_menu" Member="menus" ThisKey="_cid" OtherKey="__rcontent" Type="menu" />
+      <Association Name="category_content" Member="category" ThisKey="__rcategory" OtherKey="_cid" Type="category" IsForeignKey="true" />
+      <Association Name="content_content" Member="content1" ThisKey="_cid" OtherKey="_cid" Type="content" IsForeignKey="true" />
+      <Association Name="image_content" Member="image" ThisKey="__rimage" OtherKey="_iid" Type="image" IsForeignKey="true" />
+      <Association Name="video_content" Member="video" ThisKey="__rvideo" OtherKey="_vid" Type="video" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.content_detail" Member="content_details">
+    <Type Name="content_detail">
+      <Column Name="[_cdid]" Member="_cdid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="[__rlang]" Member="__rlang" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[__rcontent]" Member="__rcontent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__rgallery]" Member="__rgallery" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="key_word" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="no" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="publish_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="content_detail_bnp_vchr_client" Member="bnp_vchr_clients" ThisKey="_cdid" OtherKey="vchr_id" Type="bnp_vchr_client" />
+      <Association Name="content_content_detail" Member="content" ThisKey="__rcontent" OtherKey="_cid" Type="content" IsForeignKey="true" />
+      <Association Name="gallery_content_detail" Member="gallery" ThisKey="__rgallery" OtherKey="_gid" Type="gallery" IsForeignKey="true" />
+      <Association Name="lang_content_detail" Member="lang" ThisKey="__rlang" OtherKey="code" Type="lang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.content_extended_gallery" Member="content_extended_galleries">
+    <Type Name="content_extended_gallery">
+      <Column Name="[__ceid]" Member="__ceid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="content_extended_gallery_content_extended_gallery" Member="content_extended_gallery2" ThisKey="__ceid" OtherKey="__ceid" Type="content_extended_gallery" Cardinality="One" />
+      <Association Name="content_extended_gallery_content_extended_gallery" Member="content_extended_gallery1" ThisKey="__ceid" OtherKey="__ceid" Type="content_extended_gallery" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.content_extra" Member="content_extras">
+    <Type Name="content_extra">
+      <Column Name="ce_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="content_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[_key]" Member="_key" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="[_val]" Member="_val" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="content_content_extra" Member="content" ThisKey="content_id" OtherKey="_cid" Type="content" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.content_form" Member="content_forms">
+    <Type Name="content_form">
+      <Column Name="[_cfid]" Member="_cfid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="display_first_name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="display_last_name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="display_email" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="display_alias_name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="display_address" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="login_needed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="review_needed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[__rcontent]" Member="__rcontent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="display_text" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="content_form_content_form_result" Member="content_form_results" ThisKey="_cfid" OtherKey="__rcontent_form" Type="content_form_result" />
+      <Association Name="content_content_form" Member="content" ThisKey="__rcontent" OtherKey="_cid" Type="content" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.content_form_result" Member="content_form_results">
+    <Type Name="content_form_result">
+      <Column Name="[_cfrid]" Member="_cfrid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="alias_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="display" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[__rcontent_form]" Member="__rcontent_form" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__rcontent]" Member="__rcontent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="content_content_form_result" Member="content" ThisKey="__rcontent" OtherKey="_cid" Type="content" IsForeignKey="true" />
+      <Association Name="content_form_content_form_result" Member="content_form" ThisKey="__rcontent_form" OtherKey="_cfid" Type="content_form" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.eng_sort" Member="eng_sorts">
+    <Type Name="eng_sort">
+      <Column Name="[_eid]" Member="_eid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="specification" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ministry" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.gallery" Member="galleries">
+    <Type Name="gallery">
+      <Column Name="[_gid]" Member="_gid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="gallery_content_detail" Member="content_details" ThisKey="_gid" OtherKey="__rgallery" Type="content_detail" />
+      <Association Name="gallery_gallery_detail" Member="gallery_details" ThisKey="_gid" OtherKey="rgllary" Type="gallery_detail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.gallery_detail" Member="gallery_details">
+    <Type Name="gallery_detail">
+      <Column Name="[_cdid]" Member="_cdid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="rgllary" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="img_url" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="gallery_gallery_detail" Member="gallery" ThisKey="rgllary" OtherKey="_gid" Type="gallery" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.image" Member="images">
+    <Type Name="image">
+      <Column Name="[_iid]" Member="_iid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[__rcontent]" Member="__rcontent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="image_content" Member="contents" ThisKey="_iid" OtherKey="__rimage" Type="content" />
+      <Association Name="content_image" Member="content" ThisKey="__rcontent" OtherKey="_cid" Type="content" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.job_type" Member="job_types">
+    <Type Name="job_type">
+      <Column Name="[_jid]" Member="_jid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lang" Member="langs">
+    <Type Name="lang">
+      <Column Name="code" Type="System.String" DbType="NVarChar(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="direction" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Association Name="lang_content_detail" Member="content_details" ThisKey="code" OtherKey="__rlang" Type="content_detail" />
+      <Association Name="lang_lang_detail" Member="lang_details" ThisKey="code" OtherKey="__rlang" Type="lang_detail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lang_detail" Member="lang_details">
+    <Type Name="lang_detail">
+      <Column Name="[_ldid]" Member="_ldid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[__rlang]" Member="__rlang" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="k" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="v" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="lang_lang_detail" Member="lang" ThisKey="__rlang" OtherKey="code" Type="lang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.legislation" Member="legislations">
+    <Type Name="legislation">
+      <Column Name="[_lid]" Member="_lid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="l_type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="l_num" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="l_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="l_summury" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="l_doc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.location" Member="locations">
+    <Type Name="location">
+      <Column Name="[_lid]" Member="_lid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.menu" Member="menus">
+    <Type Name="menu">
+      <Column Name="[_mid]" Member="_mid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="parent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__rcontent]" Member="__rcontent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__rmodule]" Member="__rmodule" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[__category]" Member="__category" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="content_menu" Member="content" ThisKey="__rcontent" OtherKey="_cid" Type="content" IsForeignKey="true" />
+      <Association Name="module_menu" Member="module" ThisKey="__rmodule" OtherKey="_mid" Type="module" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.module" Member="modules">
+    <Type Name="module">
+      <Column Name="[_mid]" Member="_mid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__rcategory]" Member="__rcategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="region" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="module_menu" Member="menus" ThisKey="_mid" OtherKey="__rmodule" Type="menu" />
+      <Association Name="module_module_detail" Member="module_details" ThisKey="_mid" OtherKey="__rmodule" Type="module_detail" />
+      <Association Name="category_module" Member="category" ThisKey="__rcategory" OtherKey="_cid" Type="category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.module_detail" Member="module_details">
+    <Type Name="module_detail">
+      <Column Name="[_mdid]" Member="_mdid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="attribute_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="attribute_value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[__rmodule]" Member="__rmodule" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="module_module_detail" Member="module" ThisKey="__rmodule" OtherKey="_mid" Type="module" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.partner_clients" Member="partner_clients">
+    <Type Name="partner_client">
+      <Column Name="[_cp_id]" Member="_cp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="client_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="partener_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="user_partner_client" Member="user" ThisKey="client_id" OtherKey="_uid" Type="user" IsForeignKey="true" />
+      <Association Name="user_partner_client1" Member="user1" ThisKey="partener_id" OtherKey="_uid" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.permission" Member="permissions">
+    <Type Name="permission">
+      <Column Name="[_pid]" Member="_pid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[__rapplication]" Member="__rapplication" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="page" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="menu_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="security_level" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="permission_permission_in_role" Member="permission_in_roles" ThisKey="_pid" OtherKey="__rpermission" Type="permission_in_role" />
+      <Association Name="application_permission" Member="application" ThisKey="__rapplication" OtherKey="_app_id" Type="application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.permission_in_role" Member="permission_in_roles">
+    <Type Name="permission_in_role">
+      <Column Name="[_prId]" Member="_prId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[__role]" Member="__role" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__rpermission]" Member="__rpermission" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="permission_permission_in_role" Member="permission" ThisKey="__rpermission" OtherKey="_pid" Type="permission" IsForeignKey="true" />
+      <Association Name="role_permission_in_role" Member="role" ThisKey="__role" OtherKey="_rid" Type="role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.role" Member="roles">
+    <Type Name="role">
+      <Column Name="[_rid]" Member="_rid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="role_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[__rapplication]" Member="__rapplication" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="default_url" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="from_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="to_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="role_permission_in_role" Member="permission_in_roles" ThisKey="_rid" OtherKey="__role" Type="permission_in_role" />
+      <Association Name="role_user_in_role" Member="user_in_roles" ThisKey="_rid" OtherKey="__role" Type="user_in_role" />
+      <Association Name="application_role" Member="application" ThisKey="__rapplication" OtherKey="_app_id" Type="application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[user]" Member="users">
+    <Type Name="user">
+      <Column Name="[_uid]" Member="_uid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="pwd" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="authenitication_mode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="location" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="work_category" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="website" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="social_network1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="social_network2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="social_newwork3" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="social_number" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="birthdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="img" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="gender" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="company" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="start_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="end_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="serial_number" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="user_bnp_vchr_client" Member="bnp_vchr_clients" ThisKey="_uid" OtherKey="client_id" Type="bnp_vchr_client" />
+      <Association Name="user_partner_client" Member="partner_clients" ThisKey="_uid" OtherKey="client_id" Type="partner_client" />
+      <Association Name="user_partner_client1" Member="partner_clients1" ThisKey="_uid" OtherKey="partener_id" Type="partner_client" />
+      <Association Name="user_user" Member="user2" ThisKey="_uid" OtherKey="_uid" Type="user" Cardinality="One" />
+      <Association Name="user_user_in_role" Member="user_in_roles" ThisKey="_uid" OtherKey="__user" Type="user_in_role" />
+      <Association Name="user_user" Member="user1" ThisKey="_uid" OtherKey="_uid" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_in_role" Member="user_in_roles">
+    <Type Name="user_in_role">
+      <Column Name="[_urid]" Member="_urid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[__user]" Member="__user" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[__role]" Member="__role" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="role_user_in_role" Member="role" ThisKey="__role" OtherKey="_rid" Type="role" IsForeignKey="true" />
+      <Association Name="user_user_in_role" Member="user" ThisKey="__user" OtherKey="_uid" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.video" Member="videos">
+    <Type Name="video">
+      <Column Name="[_vid]" Member="_vid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="vedio" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="create_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="video_content" Member="contents" ThisKey="_vid" OtherKey="__rvideo" Type="content" />
+    </Type>
+  </Table>
+</Database>
